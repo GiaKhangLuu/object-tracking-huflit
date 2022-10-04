@@ -80,7 +80,7 @@ def convert_coco_pred_to_bdd100k(pred_file, gt_file, result_file):
         return [{'id': i[0], 
                  'category': i[1], 
                  'score': i[2], 
-                 'box2d': i[3]} for i in x]
+                 'box2d': i[3]} for i in pred_of_image]
 
     # Get label column, this column is the list of all
     # predictions per image
