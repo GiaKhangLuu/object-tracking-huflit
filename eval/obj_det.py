@@ -1,8 +1,16 @@
 import json
 import pandas as pd
 import numpy as np
-from ..helper.file import load_json_file, write_to_json_file
-from ..coco.helper import COCOHelper
+import os
+import sys
+
+# Root directory of the projet
+ROOT_DIR = os.path.abspath('../')
+# Find local package
+sys.path.append(ROOT_DIR)
+
+from helper.file import load_json_file, write_to_json_file
+from coco.helper import COCOHelper
 
 def convert_coco_pred_to_bdd100k(pred_file, gt_file, result_file):
     """ 

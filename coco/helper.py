@@ -1,6 +1,14 @@
 import pandas as pd
 import numpy as np
-from ..helper.file import load_json_file
+import sys
+import os
+
+# Root directory of the projet
+ROOT_DIR = os.path.abspath('../')
+# Find local package
+sys.path.append(ROOT_DIR)
+
+from helper.file import load_json_file
 
 class COCOHelper():
 
