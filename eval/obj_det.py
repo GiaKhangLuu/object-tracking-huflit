@@ -47,7 +47,7 @@ def convert_coco_pred_to_bdd100k(pred_file, gt_file, result_file):
     )
 
     # Create image_name column         
-    image_names = pred_val_coco_df['image_id'].apply(
+    image_names = pred_coco_df['image_id'].apply(
         lambda r: coco_helper.image_info_dict[r]
     )
 
@@ -62,7 +62,7 @@ def convert_coco_pred_to_bdd100k(pred_file, gt_file, result_file):
     ) 
 
     # Convert pred_id to string
-    pred_val_coco_df['pred_id'] = pred_val_coco_df['pred_id'].astype(str)
+    pred_coco_df['pred_id'] = pred_coco_df['pred_id'].astype(str)
    
     # Group df by image name 
     pred_groupby_name = (pred_coco_df.
