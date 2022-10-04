@@ -13,10 +13,10 @@ from helper.file import load_json_file
 class COCOHelper():
 
     def __init__(self, gt_file):
-        "
+        """
         Params:
             gt_file: Ground truth file path
-        "
+        """
 
         self.gt_coco = load_json_file(gt_file)
         self.category_dict = self.get_category_dict()

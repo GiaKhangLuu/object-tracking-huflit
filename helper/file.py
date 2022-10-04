@@ -2,11 +2,11 @@ import json
 import os
 
 def load_json_file(json_file):
-    "
+    """
     Load json file
 
     Return: json obj
-    "
+    """
     
     file = open(json_file)
     return json.load(file)
