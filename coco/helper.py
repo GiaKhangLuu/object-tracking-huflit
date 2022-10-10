@@ -104,14 +104,14 @@ class COCO2YOLO(COCOHelper):
                                                         how='right')
         images_no_annot = images[~images['file_name'].isin(images_have_annot.index)]
 
-        def conver(r):
+        def conver(self, r):
             img_size = (r['width'], r['height'])
             bboxes = r['bbox']
             yolo_bboxes = [self.compute_yolo_box(bbox, img_size) 
                            for bbox in bboxes]
             return yolo_bboxes
 
-        bbox_yolo = images_have_annot.apply(convert, axis=1)
+        bbox_yolo = images_have_annot.apply(self.convert, axis=1)
         category_id = images_have_annot.apply(
                 lambda cat_ids: [cat_id - 1 for cat_id in cat_ids])
 
