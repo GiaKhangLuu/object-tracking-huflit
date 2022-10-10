@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import tqdm
+#import tqdm
 import sys
 import os
 
@@ -104,18 +104,19 @@ class COCO2YOLO(COCOHelper):
                                                         how='right')
         images_no_annot = images[~images['file_name'].isin(images_have_annot.index)]
 
-        def convert(self, r):
+        def convert(r):
             img_size = (r['width'], r['height'])
             bboxes = r['bbox']
             yolo_bboxes = [self.compute_yolo_box(bbox, img_size) 
                            for bbox in bboxes]
             return yolo_bboxes
 
-        bbox_yolo = images_have_annot.apply(self.convert, axis=1)
-        category_id = images_have_annot.apply(
+        bbox_yolo = images_have_annot.apply(convert, axis=1)
+        category_id = images_have_annot['category_id'].apply(
                 lambda cat_ids: [cat_id - 1 for cat_id in cat_ids])
 
-        images_have_annot[['category_id', 'bbox_yolo']] = [category_id, bbox_yolo]
+        images_have_annot['category_id'] = category_id
+        images_have_annot['bbox_yolo'] = bbox_yolo
 
         return images_have_annot, images_no_annot
 
