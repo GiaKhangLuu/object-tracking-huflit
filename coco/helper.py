@@ -104,7 +104,7 @@ class COCO2YOLO(COCOHelper):
                                                         how='right')
         images_no_annot = images[~images['file_name'].isin(images_have_annot.index)]
 
-        def conver(self, r):
+        def convert(self, r):
             img_size = (r['width'], r['height'])
             bboxes = r['bbox']
             yolo_bboxes = [self.compute_yolo_box(bbox, img_size) 
