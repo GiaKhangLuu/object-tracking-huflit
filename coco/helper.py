@@ -96,7 +96,7 @@ class COCO2YOLO(COCOHelper):
         images = pd.DataFrame.from_records(self.annot_coco['images'])
         annots = pd.DataFrame.from_records(self.annot_coco['annotations'])
 
-        annots = (annot.groupby('image_id')
+        annots = (annots.groupby('image_id')
                         ['category_id', 'bbox'].agg(list))
         images = images[['id', 'file_name', 'width', 'height']]
 
