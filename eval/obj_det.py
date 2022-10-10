@@ -48,7 +48,7 @@ def convert_coco_pred_to_bdd100k(pred_file, gt_file, result_file):
 
     # Create image_name column         
     image_names = pred_coco_df['image_id'].apply(
-        lambda r: coco_helper.image_info_dict[r]
+        lambda r: coco_helper.image_name_dict[r]
     )
 
     # Create prediction_id column
