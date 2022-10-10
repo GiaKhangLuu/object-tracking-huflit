@@ -102,7 +102,8 @@ class COCO2YOLO(COCOHelper):
 
         images_have_annot = images.set_index('id').join(annots, 
                                                         how='right')
-        images_no_annot = images[~images['file_name'].isin(images_have_annot.index)]
+        images_no_annot = images[~images['file_name'].
+                                 isin(images_have_annot['file_name'])]
 
         def convert(r):
             img_size = (r['width'], r['height'])
