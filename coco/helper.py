@@ -121,12 +121,3 @@ class COCO2YOLO(COCOHelper):
 
         return images_have_annot, images_no_annot
 
-
-
-
-
-
-
-
-
-     
